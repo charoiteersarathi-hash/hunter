@@ -1,92 +1,209 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Happy Birthday Taniiii ❤️</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Taniiii ❤️</title>
+
 <style>
-body{
-font-family:Arial,sans-serif;
-background:linear-gradient(to bottom,#ff9a9e,#fad0c4);
-text-align:center;
+*{
 margin:0;
-padding:20px;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff4e8a,#ff9a9e);
+overflow-x:hidden;
 color:white;
+text-align:center;
+}
+
+.screen{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.hidden{
+display:none;
 }
 
 h1{
-font-size:40px;
+font-size:3rem;
+animation:fadeIn 2s ease;
 }
 
-img{
-width:90%;
-max-width:350px;
-border-radius:20px;
-margin:15px 0;
-box-shadow:0 0 15px rgba(0,0,0,0.3);
-}
-
-.card{
-background:rgba(255,255,255,0.2);
-padding:20px;
-margin:20px;
-border-radius:20px;
+p{
+font-size:1.2rem;
+margin-top:15px;
+line-height:1.8;
 }
 
 button{
-padding:15px 30px;
-font-size:18px;
+margin-top:25px;
+padding:15px 35px;
 border:none;
-border-radius:30px;
-background:white;
-color:#ff4081;
+border-radius:50px;
+font-size:18px;
 cursor:pointer;
+background:white;
+color:#ff2e75;
+font-weight:bold;
+}
+
+.gift{
+font-size:100px;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+
+.gallery img{
+width:300px;
+max-width:90%;
+margin:15px;
+border-radius:20px;
+box-shadow:0 0 20px rgba(0,0,0,.3);
+animation:zoom 2s ease;
+}
+
+.card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+padding:25px;
+margin:20px;
+border-radius:20px;
+width:90%;
+max-width:700px;
+}
+
+.hearts{
+position:fixed;
+width:100%;
+height:100%;
+pointer-events:none;
+top:0;
+left:0;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:25px;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-120vh);}
+}
+
+@keyframes bounce{
+50%{transform:translateY(-15px);}
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes zoom{
+from{transform:scale(.7);}
+to{transform:scale(1);}
 }
 </style>
 </head>
 
 <body>
 
+<div class="hearts" id="hearts"></div>
+
+<div class="screen" id="welcome">
 <h1>🎂 Happy Birthday Taniiii ❤️</h1>
+<p>I've made something special for you...</p>
+<button onclick="openGift()">Open Surprise ✨</button>
+</div>
+
+<div class="screen hidden" id="giftScreen">
+<div class="gift" onclick="showWebsite()">🎁</div>
+<p>Tap the Gift Box</p>
+</div>
+
+<div class="hidden" id="mainContent">
+
+<div class="screen">
+<h1>Taniiii ❤️</h1>
+<p>Ulagathulaieyy romba special nee enaku.</p>
+</div>
+
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
 
 <div class="card">
-<h2>My Special Person 💖</h2>
-<p>
-Taniiii ulagathulaieyy romba special nee enaku.
-</p>
-
+<h2>💖 My Gift To You</h2>
 <p>
 Naa unaku yaarum tharadha gift unaku thaaren...
-</p>
-
-<h2>❤️ TRUST ❤️</h2>
-
-<p>
+<br><br>
+❤️ TRUST ❤️
+<br><br>
 Unnudaiya trust-a naa odaikkavey maaten.
 </p>
 </div>
 
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-
 <div class="card">
-<h2>💌 Letter For You</h2>
-
+<h2>💌 Letter</h2>
 <p>
-Nee siricha naa santhosham.<br><br>
-
-Nee kashtapatta naa un pakkathula iruppen.<br><br>
-
-Un santhosham, un dreams, un future...
-ellathulayum naa un kooda iruppen.<br><br>
-
+Nee siricha naa santhosham.
+<br><br>
+Nee kashtapatta naa un pakkathula iruppen.
+<br><br>
+Un dreams, un future,
+ellathulayum naa un kooda iruppen.
+<br><br>
 Happy Birthday My Special Person ❤️🎂
 </p>
 
-<h3>— Saran Sarathi ❤️</h3>
+<h3>— Saran Sarathi</h3>
 </div>
 
-<h2>✨ Since 08/07/2026 ✨</h2>
+<div class="screen">
+<h1>❤️ Forever ❤️</h1>
+<p>Since 08/07/2026 ✨</p>
+</div>
+
+</div>
+
+<script>
+function openGift(){
+document.getElementById("welcome").classList.add("hidden");
+document.getElementById("giftScreen").classList.remove("hidden");
+}
+
+function showWebsite(){
+document.getElementById("giftScreen").classList.add("hidden");
+document.getElementById("mainContent").classList.remove("hidden");
+}
+
+for(let i=0;i<40;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"%";
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+heart.style.fontSize=(15+Math.random()*25)+"px";
+document.getElementById("hearts").appendChild(heart);
+}
+</script>
 
 </body>
 </html>
+```
